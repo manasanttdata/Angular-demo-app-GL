@@ -1,5 +1,5 @@
 
-name: Node.js CI
+name: CI Sample build for angular app
 
 on:
   push:
@@ -20,6 +20,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+        cache-dependency-path: './angular-demo-app/package-lock.json'
     - run: npm ci
     - run: npm run build --if-present
     - run: zip -r publish.zip
